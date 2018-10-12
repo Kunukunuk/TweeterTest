@@ -10,6 +10,8 @@ import UIKit
 
 class Tweet: NSObject {
 
+    var tweetString: String?
+    
     init(dictionary: [String : Any]) {
         super.init()
     }
