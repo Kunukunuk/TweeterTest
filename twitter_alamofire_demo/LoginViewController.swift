@@ -12,14 +12,6 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        APIManager.shared.getCurrentAccount { (user: User?, error: Error?) in
-            if error == nil {
-                print("successful")
-            } else {
-                print("error \(error?.localizedDescription)")
-            }
-            
-        }
         
     }
     
@@ -42,8 +34,5 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
-    
-    
     
 }

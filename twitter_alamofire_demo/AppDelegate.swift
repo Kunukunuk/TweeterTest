@@ -17,7 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // MARK: TODO: Check for logged in user
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if User.current != nil {
+            let homeTimelineViewController = storyboard.instantiateViewController(withIdentifier: "TimelineViewController")
+            window?.rootViewController = homeTimelineViewController
+        } else {
+            let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController")
+            window?.rootViewController = loginViewController
+        }
         return true
     }
     

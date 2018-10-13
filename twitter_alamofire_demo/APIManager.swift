@@ -41,7 +41,8 @@ class APIManager: SessionManager {
                     print("Welcome \(user.name)")
                     
                     // MARK: TODO: set User.current, so that it's persisted
-                    //User.curren
+                    User.current = user
+                    
                     success()
                 }
             })
