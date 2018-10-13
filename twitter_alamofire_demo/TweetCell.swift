@@ -30,7 +30,13 @@ class TweetCell: UITableViewCell {
     var tweet: Tweet! {
         didSet {
             if tweet.user?.profileImageURL != nil {
+                print("*** \(tweet.user?.profileImageURL)")
                 profileImageView.af_setImage(withURL: (tweet.user?.profileImageURL)!)
+            }
+            
+            if tweet.user?.profileImageURLHttps != nil {
+                print("*** \(tweet.user?.profileImageURLHttps)")
+                profileImageView.af_setImage(withURL: (tweet.user?.profileImageURLHttps)!)
             }
             tweetTextLabel.text = tweet.text
             usernameLabel.text = tweet.user?.name

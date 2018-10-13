@@ -16,6 +16,7 @@ class User: NSObject {
     var followerCount: Int?
     var verified: Int?
     var profileImageURL: URL?
+    var profileImageURLHttps: URL?
     
     private static var _current: User?
     var dictionary: [String: Any]?
@@ -55,6 +56,9 @@ class User: NSObject {
         followerCount = dictionary["followers_count"] as? Int ?? 0
         let profileString = dictionary["profile_image_url"] as? String ?? ""
         profileImageURL = URL(string: profileString)
+        let profilStringHttps = dictionary["profile_image_url_https"] as? String ?? ""
+        profileImageURLHttps = URL(string: profilStringHttps)
+        
     }
     
 }
