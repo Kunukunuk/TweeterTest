@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TimelineViewController: UIViewController, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate {
 
     
     @IBOutlet weak var tableView: UITableView!
@@ -35,6 +35,12 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
         
         return cell
+    }
+    
+    
+    @IBAction func tapLogout(_ sender: UIBarButtonItem) {
+        
+        APIManager.logout()
     }
     /*
     // MARK: - Navigation

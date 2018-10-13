@@ -155,6 +155,18 @@ class APIManager: SessionManager {
         adapter = oauthManager.requestAdapter
     }
     
+    //Mark: Logout
+    static func logout () {
+        // 1. Clear current user
+        User.current = nil
+        
+        // TODO: 2. Deauthorize OAuth tokens
+        APIManager().clearCredentials()
+        
+        // 3. Post logout notification
+        NotificationCenter.default.post(name: NSNotification.Name("didLogout"), object: nil)
+    }
+    
     // MARK: Handle url
     // OAuth Step 3
     // Finish oauth process by fetching access token

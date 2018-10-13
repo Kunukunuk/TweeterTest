@@ -98,7 +98,7 @@
                     <navigationItem key="navigationItem" title="Home Timeline" id="9Zi-uW-GTS">
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="hz2-ji-ft0">
                             <connections>
-                                <action selector="didTapLogout:" destination="5YO-Vh-39k" id="fM7-h5-mq1"/>
+                                <action selector="tapLogout:" destination="5YO-Vh-39k" id="6Zf-0G-vrT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
