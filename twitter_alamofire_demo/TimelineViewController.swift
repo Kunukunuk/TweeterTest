@@ -12,14 +12,26 @@ class TimelineViewController: UIViewController, UINavigationControllerDelegate, 
 
     var tweetsArray: [Tweet] = []
     @IBOutlet weak var tableView: UITableView!
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.dataSource = self
         tableView.delegate = self
+        
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
+        tableView.insertSubview(refreshControl, at: 0)
+        
+        
         getTweets()
         // Do any additional setup after loading the view.
+    }
+    
+    func refreshControlAction(_ refreshControl: UIRefreshControl) {
+        tweetsArray.removeAll()
+        getTweets()
+        refreshControl.endRefreshing()
     }
 
     override func didReceiveMemoryWarning() {
