@@ -15,7 +15,7 @@ class User: NSObject {
     var followingCount: Int?
     var followerCount: Int?
     var verified: Int?
-    var profileImageString: String?
+    var profileImageURL: URL?
     
     private static var _current: User?
     var dictionary: [String: Any]?
@@ -48,11 +48,13 @@ class User: NSObject {
         
         self.dictionary = dictionary
         
+        print("user: \(dictionary)")
         name = dictionary["name"] as? String ?? "No Name"
         screenName = dictionary["screen_name"] as? String ?? "No screen name"
         followingCount = dictionary["following"] as? Int ?? 0
         followerCount = dictionary["followers_count"] as? Int ?? 0
-        profileImageString = dictionary["profile_image_url"] as? String ?? ""
+        let profileString = dictionary["profile_image_url"] as? String ?? ""
+        profileImageURL = URL(string: profileString)
     }
     
 }

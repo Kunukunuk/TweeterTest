@@ -7,17 +7,17 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class TweetCell: UITableViewCell {
 
     
     @IBOutlet weak var profileImageView: UIImageView!
+    
     @IBOutlet weak var tweetTextLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    
     @IBOutlet weak var screenNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    
     @IBOutlet weak var replyCountLabel: UILabel!
     @IBOutlet weak var retweetCountLabel: UILabel!
     @IBOutlet weak var favoriteCountLabel: UILabel!
@@ -27,6 +27,26 @@ class TweetCell: UITableViewCell {
     @IBOutlet weak var favoriteButton: UIButton!
     @IBOutlet weak var messageButton: UIButton!
     
+    var tweet: Tweet! {
+        didSet {
+            if tweet.user?.profileImageURL != nil {
+                profileImageView.af_setImage(withURL: (tweet.user?.profileImageURL)!)
+            }
+            tweetTextLabel.text = tweet.text
+            usernameLabel.text = tweet.user?.name
+            screenNameLabel.text = tweet.user?.screenName
+            dateLabel.text = tweet.createdAtString
+            
+            if tweet.favorited! {
+                favoriteCountLabel.text = "\(tweet.favoriteCount ?? 0)"
+                favoriteButton.setImage(UIImage(named: "favor-icon-red"), for: .normal)
+            }
+            if tweet.retweeted! {
+                retweetCountLabel.text = "\(tweet.retweetCount ?? 0)"
+                retweetButton.setImage(UIImage(named: "retweet-icon-green"), for: .normal)
+            }
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

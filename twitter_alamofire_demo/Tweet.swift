@@ -26,6 +26,7 @@ class Tweet: NSObject {
         super.init()
         
         var dictionary = dictionary
+        print("dict: \(dictionary)")
         
         // Is this a re-tweet?
         if let originalTweet = dictionary["retweeted_status"] as? [String: Any] {
@@ -38,7 +39,7 @@ class Tweet: NSObject {
         
         id = dictionary["id"] as? Int
         text = dictionary["text"] as? String
-        favoriteCount = dictionary["favorite_count"] as? Int
+        favoriteCount = dictionary["favorites_count"] as? Int
         favorited = dictionary["favorited"] as? Bool
         retweetCount = dictionary["retweet_count"] as? Int
         retweeted = dictionary["retweeted"] as? Bool

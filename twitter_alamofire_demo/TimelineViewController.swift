@@ -10,7 +10,7 @@ import UIKit
 
 class TimelineViewController: UIViewController, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate {
 
-    
+    var tweetsArray: [Tweet] = []
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -18,6 +18,7 @@ class TimelineViewController: UIViewController, UINavigationControllerDelegate, 
 
         tableView.dataSource = self
         tableView.delegate = self
+        getTweets()
         // Do any additional setup after loading the view.
     }
 
@@ -26,14 +27,29 @@ class TimelineViewController: UIViewController, UINavigationControllerDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
+    func getTweets() {
+        APIManager.shared.getHomeTimeLine { (tweets: [Tweet]?, error: Error?) in
+            if error == nil {
+                for tweet in tweets! {
+                    self.tweetsArray.append(tweet)
+                    self.tableView.reloadData()
+                }
+            } else {
+                print("error: \(error?.localizedDescription)")
+            }
+        }
+        tableView.reloadData()
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        let count = tweetsArray.isEmpty ? 1 : tweetsArray.count
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
         
+        cell.tweet = tweetsArray[indexPath.row]
         return cell
     }
     
