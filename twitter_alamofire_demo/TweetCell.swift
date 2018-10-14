@@ -63,6 +63,60 @@ class TweetCell: UITableViewCell {
         // Initialization code
     }
 
+    
+    @IBAction func replyButton(_ sender: UIButton) {
+    }
+    
+
+    @IBAction func retweetButton(_ sender: UIButton) {
+        
+        if tweet.retweeted! {
+            tweet.retweetCount! -= 1
+        } else {
+            tweet.retweetCount! += 1
+        }
+        tweet.retweeted = !tweet.retweeted!
+        refreshData()
+    }
+    
+    @IBAction func favoriteButton(_ sender: UIButton) {
+        
+        if tweet.favorited! {
+            tweet.favoriteCount! -= 1
+        } else {
+            tweet.favoriteCount! += 1
+        }
+        tweet.favorited = !tweet.favorited!
+        refreshData()
+        /*APIManager.shared.favorite(tweet) { (tweet: Tweet?, error: Error?) in
+            if let  error = error {
+                print("Error favoriting tweet: \(error.localizedDescription)")
+            } else if let tweet = tweet {
+                print("Successfully favorited the following Tweet: \n\(tweet.text)")
+            }
+        }*/
+    }
+    
+    @IBAction func messageButton(_ sender: UIButton) {
+    }
+    
+    func refreshData() {
+        if tweet.favorited! {
+            favoriteCountLabel.text = "\(tweet.favoriteCount ?? 0)"
+            favoriteButton.setImage(UIImage(named: "favor-icon-red"), for: .normal)
+        } else {
+            favoriteCountLabel.text = "\(tweet.favoriteCount!)"
+            favoriteButton.setImage(UIImage(named: "favor-icon"), for: .normal)
+        }
+        if tweet.retweeted! {
+            retweetCountLabel.text = "\(tweet.retweetCount ?? 0)"
+            retweetButton.setImage(UIImage(named: "retweet-icon-green"), for: .normal)
+        } else {
+            retweetCountLabel.text = "\(tweet.retweetCount!)"
+            retweetButton.setImage(UIImage(named: "retweet-icon"), for: .normal)
+        }
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

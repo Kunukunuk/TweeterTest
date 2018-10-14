@@ -109,6 +109,9 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <state key="normal" image="reply-icon"/>
+                                                            <connections>
+                                                                <action selector="replyButton:" destination="U1g-kw-izy" eventType="touchUpInside" id="hg1-IH-nL4"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQB-0M-zfb">
                                                             <rect key="frame" x="38" y="0.0" width="24.5" height="30"/>
@@ -125,6 +128,9 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <state key="normal" image="retweet-icon"/>
+                                                            <connections>
+                                                                <action selector="retweetButton:" destination="U1g-kw-izy" eventType="touchUpInside" id="Wdy-Jr-s83"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVv-zD-xoh">
                                                             <rect key="frame" x="38" y="0.0" width="24.5" height="30"/>
@@ -141,6 +147,9 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                             <state key="normal" image="favor-icon"/>
+                                                            <connections>
+                                                                <action selector="favoriteButton:" destination="U1g-kw-izy" eventType="touchUpInside" id="afo-fA-1uF"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hell" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgj-e8-3oz">
                                                             <rect key="frame" x="38" y="0.0" width="24.5" height="30"/>
@@ -153,6 +162,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Grs-MX-WSs">
                                                     <rect key="frame" x="340" y="67.5" width="30" height="30"/>
                                                     <state key="normal" image="message-icon"/>
+                                                    <connections>
+                                                        <action selector="messageButton:" destination="U1g-kw-izy" eventType="touchUpInside" id="h8W-c4-ra4"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
