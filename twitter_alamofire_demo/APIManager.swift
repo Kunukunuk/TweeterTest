@@ -145,13 +145,38 @@ class APIManager: SessionManager {
     
     // MARK: TODO: Retweet
     
-    func retweet() {
+    func retweet(_ tweet: Tweet, completion: @escaping (Tweet?, Error?) -> ()) {
         
+        let parameters = ["id": tweet.id]
+        let id = parameters["id"]!
+        let urlString = "https://api.twitter.com/1.1/statuses/retweet/\(id).json"
+        
+        request(urlString, method: .post, encoding: URLEncoding.queryString).validate().responseJSON { (response) in
+            if response.result.isSuccess,
+                let tweetDictionary = response.result.value as? [String: Any] {
+                let tweet = Tweet(dictionary: tweetDictionary)
+                completion(tweet, nil)
+            } else {
+                completion(nil, response.result.error)
+            }
+        }
     }
     
     // MARK: TODO: Un-Retweet
-    func unRetweet() {
+    func unRetweet(_ tweet: Tweet, completion: @escaping (Tweet?, Error?) -> ()) {
+        let parameters = ["id": tweet.id]
+        let id = parameters["id"]!
+        let urlString = "https://api.twitter.com/1.1/statuses/unretweet/\(id).json"
         
+        request(urlString, method: .post, encoding: URLEncoding.queryString).validate().responseJSON { (response) in
+            if response.result.isSuccess,
+                let tweetDictionary = response.result.value as? [String: Any] {
+                let tweet = Tweet(dictionary: tweetDictionary)
+                completion(tweet, nil)
+            } else {
+                completion(nil, response.result.error)
+            }
+        }
     }
     
     // MARK: TODO: Compose Tweet

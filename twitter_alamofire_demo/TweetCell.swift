@@ -47,13 +47,15 @@ class TweetCell: UITableViewCell {
                 favoriteCountLabel.text = "\(tweet.favoriteCount ?? 0)"
                 favoriteButton.setImage(UIImage(named: "favor-icon-red"), for: .normal)
             } else {
-                favoriteCountLabel.text = "0"
+                favoriteCountLabel.text = "\(tweet.favoriteCount!)"
+                favoriteButton.setImage(UIImage(named: "favor-icon"), for: .normal)
             }
             if tweet.retweeted! {
                 retweetCountLabel.text = "\(tweet.retweetCount ?? 0)"
                 retweetButton.setImage(UIImage(named: "retweet-icon-green"), for: .normal)
             } else {
-                retweetCountLabel.text = "0"
+                retweetCountLabel.text = "\(tweet.retweetCount!)"
+                retweetButton.setImage(UIImage(named: "retweet-icon"), for: .normal)
             }
         }
     }
@@ -88,13 +90,14 @@ class TweetCell: UITableViewCell {
         }
         tweet.favorited = !tweet.favorited!
         refreshData()
-        /*APIManager.shared.favorite(tweet) { (tweet: Tweet?, error: Error?) in
+        print("tweet: \(tweet)")
+        APIManager.shared.favorite(tweet) { (tweet: Tweet?, error: Error?) in
             if let  error = error {
                 print("Error favoriting tweet: \(error.localizedDescription)")
             } else if let tweet = tweet {
                 print("Successfully favorited the following Tweet: \n\(tweet.text)")
             }
-        }*/
+        }
     }
     
     @IBAction func messageButton(_ sender: UIButton) {
