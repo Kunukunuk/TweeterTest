@@ -145,11 +145,24 @@ class APIManager: SessionManager {
     
     // MARK: TODO: Retweet
     
+    func retweet() {
+        
+    }
+    
     // MARK: TODO: Un-Retweet
+    func unRetweet() {
+        
+    }
     
     // MARK: TODO: Compose Tweet
+    func composeTweet() {
+        
+    }
     
     // MARK: TODO: Get User Timeline
+    func getUserTimeline() {
+        
+    }
     
     //--------------------------------------------------------------------------------//
     
