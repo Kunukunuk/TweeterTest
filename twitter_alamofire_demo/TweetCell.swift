@@ -79,6 +79,30 @@ class TweetCell: UITableViewCell {
         }
         tweet.retweeted = !tweet.retweeted!
         refreshData()
+        print("retweet?: \(tweet.retweeted)")
+        if tweet.retweeted! {
+            print("in retweet")
+            tweet.retweetedByUser = User.current
+            APIManager.shared.retweet(tweet) { (tweet: Tweet?, error: Error?) in
+                if let error = error {
+                    print("Error retweeting: \(error.localizedDescription)")
+                } else {
+                    print("successful retweet with tweet \(self.tweet.text)\n")
+                    print("returned tweet? :\(tweet)")
+                }
+            }
+        } else {
+            tweet.retweetedByUser = nil
+            print("I am here")
+            APIManager.shared.unRetweet(tweet) { (tweet: Tweet?, error: Error?) in
+                if let error = error {
+                    print("Error retweeting: \(error.localizedDescription)")
+                } else {
+                    print("successful retweet with tweet \(self.tweet.text)\n")
+                    print("returned tweet? :\(tweet)")
+                }
+            }
+        }
     }
     
     @IBAction func favoriteButton(_ sender: UIButton) {
@@ -94,7 +118,7 @@ class TweetCell: UITableViewCell {
             APIManager.shared.favorite(tweet) { (tweet: Tweet?, error: Error?) in
                 if let  error = error {
                     print("Error favoriting tweet: \(error.localizedDescription)")
-                } else if let tweet = tweet {
+                } else {
                     print("Successfully favorited the following Tweet: \n\(self.tweet.text)")
                 }
             }
