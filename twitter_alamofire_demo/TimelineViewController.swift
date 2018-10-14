@@ -23,6 +23,8 @@ class TimelineViewController: UIViewController, UINavigationControllerDelegate, 
         refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), for: UIControlEvents.valueChanged)
         tableView.insertSubview(refreshControl, at: 0)
         
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50
         
         getTweets()
         // Do any additional setup after loading the view.
@@ -60,7 +62,9 @@ class TimelineViewController: UIViewController, UINavigationControllerDelegate, 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
         
-        cell.tweet = tweetsArray[indexPath.row]
+        if !tweetsArray.isEmpty {
+            cell.tweet = tweetsArray[indexPath.row]
+        }
         return cell
     }
     

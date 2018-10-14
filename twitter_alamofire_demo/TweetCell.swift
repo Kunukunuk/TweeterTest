@@ -30,12 +30,10 @@ class TweetCell: UITableViewCell {
     var tweet: Tweet! {
         didSet {
             if tweet.user?.profileImageURL != nil {
-                print("*** \(tweet.user?.profileImageURL)")
                 profileImageView.af_setImage(withURL: (tweet.user?.profileImageURL)!)
             }
             
             if tweet.user?.profileImageURLHttps != nil {
-                print("*** \(tweet.user?.profileImageURLHttps)")
                 profileImageView.af_setImage(withURL: (tweet.user?.profileImageURLHttps)!)
             }
             tweetTextLabel.text = tweet.text
@@ -43,13 +41,19 @@ class TweetCell: UITableViewCell {
             screenNameLabel.text = tweet.user?.screenName
             dateLabel.text = tweet.createdAtString
             
+            replyCountLabel.text = "0"
+            
             if tweet.favorited! {
                 favoriteCountLabel.text = "\(tweet.favoriteCount ?? 0)"
                 favoriteButton.setImage(UIImage(named: "favor-icon-red"), for: .normal)
+            } else {
+                favoriteCountLabel.text = "0"
             }
             if tweet.retweeted! {
                 retweetCountLabel.text = "\(tweet.retweetCount ?? 0)"
                 retweetButton.setImage(UIImage(named: "retweet-icon-green"), for: .normal)
+            } else {
+                retweetCountLabel.text = "0"
             }
         }
     }
