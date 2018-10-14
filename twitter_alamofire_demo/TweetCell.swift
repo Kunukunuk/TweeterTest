@@ -90,12 +90,21 @@ class TweetCell: UITableViewCell {
         }
         tweet.favorited = !tweet.favorited!
         refreshData()
-        print("tweet: \(tweet)")
-        APIManager.shared.favorite(tweet) { (tweet: Tweet?, error: Error?) in
-            if let  error = error {
-                print("Error favoriting tweet: \(error.localizedDescription)")
-            } else if let tweet = tweet {
-                print("Successfully favorited the following Tweet: \n\(tweet.text)")
+        if tweet.favorited! {
+            APIManager.shared.favorite(tweet) { (tweet: Tweet?, error: Error?) in
+                if let  error = error {
+                    print("Error favoriting tweet: \(error.localizedDescription)")
+                } else if let tweet = tweet {
+                    print("Successfully favorited the following Tweet: \n\(self.tweet.text)")
+                }
+            }
+        } else {
+            APIManager.shared.unFavorite(tweet) { (tweet: Tweet?, error: Error?) in
+                if let error = error {
+                    print("Error un favoriting tweet: \(error.localizedDescription)")
+                } else {
+                    print("successfully un favorited the following Tweet: \n\(self.tweet.text)")
+                }
             }
         }
     }
