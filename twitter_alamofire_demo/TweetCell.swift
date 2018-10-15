@@ -9,13 +9,14 @@
 import UIKit
 import AlamofireImage
 import DateToolsSwift
+import TTTAttributedLabel
 
-class TweetCell: UITableViewCell {
+class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
 
     
     @IBOutlet weak var profileImageView: UIImageView!
     
-    @IBOutlet weak var tweetTextLabel: UILabel!
+    @IBOutlet weak var tweetTextLabel: TTTAttributedLabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var screenNameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -37,7 +38,16 @@ class TweetCell: UITableViewCell {
             if tweet.user?.profileImageURLHttps != nil {
                 profileImageView.af_setImage(withURL: (tweet.user?.profileImageURLHttps)!)
             }
+            
+            tweetTextLabel.delegate = self
+            //let nsString = tweet.text! as NSString
+            //let rangeAt = nsString.range(of: "@")
+            //let rangeHash = nsString.range(of: "#")
+            
+            //tweetTextLabel.addLink(toAddress: <#T##[AnyHashable : Any]!#>, with: <#T##NSRange#>)
+            
             tweetTextLabel.text = tweet.text
+          
             usernameLabel.text = tweet.user?.name
             screenNameLabel.text = tweet.user?.screenName
             
@@ -75,7 +85,10 @@ class TweetCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
+    func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWithAddress addressComponents: [AnyHashable : Any]!) {
+        print("hello")
+    }
     
     @IBAction func replyButton(_ sender: UIButton) {
     }
@@ -90,7 +103,6 @@ class TweetCell: UITableViewCell {
         }
         tweet.retweeted = !tweet.retweeted!
         refreshData()
-        print("retweet?: \(tweet.retweeted)")
         if tweet.retweeted! {
             print("in retweet")
             tweet.retweetedByUser = User.current
@@ -104,7 +116,6 @@ class TweetCell: UITableViewCell {
             }
         } else {
             tweet.retweetedByUser = nil
-            print("I am here")
             APIManager.shared.unRetweet(tweet) { (tweet: Tweet?, error: Error?) in
                 if let error = error {
                     print("Error retweeting: \(error.localizedDescription)")

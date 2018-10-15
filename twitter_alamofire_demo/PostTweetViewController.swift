@@ -37,6 +37,7 @@ class PostTweetViewController: UIViewController, UITextViewDelegate {
                 print("Error 123***: \(error.localizedDescription)")
             } else {
                 print("Successful!!: \(tweet)")
+                self.tabBarController?.selectedIndex = 0
             }
         }
         

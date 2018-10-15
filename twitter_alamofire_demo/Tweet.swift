@@ -42,7 +42,6 @@ class Tweet: NSObject {
         favorited = dictionary["favorited"] as? Bool
         retweetCount = dictionary["retweet_count"] as? Int
         retweeted = dictionary["retweeted"] as? Bool
-        print("retweeted???: \(retweeted)")
         
         // TODO: initialize user
         let user = dictionary["user"] as! [String: Any]

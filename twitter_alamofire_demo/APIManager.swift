@@ -196,13 +196,6 @@ class APIManager: SessionManager {
         }) { (error: OAuthSwiftError) in
             completion(nil, error.underlyingError)
         }
-        /*request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.queryString).validate().responseData { (response) in
-            if response.result.isSuccess {
-                
-            } else {
-                completion(nil, response.result.error)
-            }
-        }*/
         
     }
     
