@@ -304,12 +304,25 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kkq-u5-YE0">
+                                <rect key="frame" x="116" y="289" width="143" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Post"/>
+                                <connections>
+                                    <action selector="postTweet:" destination="Dka-I5-xTt" eventType="touchUpInside" id="W4k-IQ-171"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Pyn-UQ-Xig" secondAttribute="trailing" constant="5" id="3Bp-nH-wdU"/>
+                            <constraint firstItem="Kkq-u5-YE0" firstAttribute="top" secondItem="Pyn-UQ-Xig" secondAttribute="bottom" constant="20" id="580-db-WRi"/>
                             <constraint firstItem="Pyn-UQ-Xig" firstAttribute="leading" secondItem="QPO-pA-oNB" secondAttribute="leading" constant="5" id="9rh-2r-pdq"/>
+                            <constraint firstItem="zc2-lw-gzV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Kkq-u5-YE0" secondAttribute="bottom" constant="10" id="DZc-SR-QIM"/>
                             <constraint firstItem="Pyn-UQ-Xig" firstAttribute="top" secondItem="nuB-kK-Yna" secondAttribute="bottom" constant="5" id="Dol-lm-Rgb"/>
+                            <constraint firstItem="Kkq-u5-YE0" firstAttribute="leading" secondItem="QPO-pA-oNB" secondAttribute="leadingMargin" constant="100" id="IyX-Iz-168"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Kkq-u5-YE0" secondAttribute="trailing" constant="100" id="ewx-2k-5DN"/>
+                            <constraint firstItem="Kkq-u5-YE0" firstAttribute="centerX" secondItem="Pyn-UQ-Xig" secondAttribute="centerX" id="zBi-SX-InM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ILE-5P-4D4"/>

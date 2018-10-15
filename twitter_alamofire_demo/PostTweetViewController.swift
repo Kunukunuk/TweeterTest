@@ -30,6 +30,12 @@ class PostTweetViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    @IBAction func postTweet(_ sender: UIButton) {
+        tweetText.text = "What is your curren status"
+        tweetText.textColor = UIColor.lightGray
+    }
+    
+    
     
     /*
     // MARK: - Navigation
