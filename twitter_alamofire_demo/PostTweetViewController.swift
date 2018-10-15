@@ -31,6 +31,15 @@ class PostTweetViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func postTweet(_ sender: UIButton) {
+        
+        APIManager.shared.composeTweet(statusText: tweetText.text!) { (tweet: Tweet?, error: Error?) in
+            if let error = error {
+                print("Error 123***: \(error.localizedDescription)")
+            } else {
+                print("Successful!!: \(tweet)")
+            }
+        }
+        
         tweetText.text = "What is your curren status"
         tweetText.textColor = UIColor.lightGray
     }

@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireImage
+import DateToolsSwift
 
 class TweetCell: UITableViewCell {
 
@@ -39,7 +40,17 @@ class TweetCell: UITableViewCell {
             tweetTextLabel.text = tweet.text
             usernameLabel.text = tweet.user?.name
             screenNameLabel.text = tweet.user?.screenName
-            dateLabel.text = tweet.createdAtString
+            
+            let formatter = DateFormatter()
+            
+            formatter.dateStyle = .short
+            formatter.timeStyle = .none
+            
+            let date = formatter.date(from: tweet.createdAtString!)
+            
+            let timeAgo = date?.shortTimeAgoSinceNow
+            
+            dateLabel.text = timeAgo
             
             replyCountLabel.text = "0"
             

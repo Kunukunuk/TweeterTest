@@ -180,21 +180,29 @@ class APIManager: SessionManager {
     }
     
     // MARK: TODO: Compose Tweet
-    func composeTweet(statusText: String, completion: @escaping (User?, Error?) -> ()) {
+    func composeTweet(statusText: String, completion: @escaping (Tweet?, Error?) -> ()) {
         
         let parameters = [
-                            "Name" : User.current?.screenName,
+                            //"name" : User.current?.screenName,
                             "status" : statusText
                         ]
         let urlString = "https://api.twitter.com/1.1/statuses/update.json"
-        
-        request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.queryString).validate().responseData { (response) in
+
+        print("parameters: \(parameters)")
+        oauthManager.client.post(urlString, parameters: parameters, headers: nil, body: nil, success: { (response: OAuthSwiftResponse) in
+            let tweetDictionary = try! response.jsonObject() as! [String: Any]
+            let tweet = Tweet(dictionary: tweetDictionary)
+            completion(tweet, nil)
+        }) { (error: OAuthSwiftError) in
+            completion(nil, error.underlyingError)
+        }
+        /*request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.queryString).validate().responseData { (response) in
             if response.result.isSuccess {
                 
             } else {
                 completion(nil, response.result.error)
             }
-        }
+        }*/
         
     }
     
