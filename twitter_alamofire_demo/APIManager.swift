@@ -180,7 +180,21 @@ class APIManager: SessionManager {
     }
     
     // MARK: TODO: Compose Tweet
-    func composeTweet() {
+    func composeTweet(statusText: String, completion: @escaping (User?, Error?) -> ()) {
+        
+        let parameters = [
+                            "Name" : User.current?.screenName,
+                            "status" : statusText
+                        ]
+        let urlString = "https://api.twitter.com/1.1/statuses/update.json"
+        
+        request(urlString, method: .post, parameters: parameters, encoding: URLEncoding.queryString).validate().responseData { (response) in
+            if response.result.isSuccess {
+                
+            } else {
+                completion(nil, response.result.error)
+            }
+        }
         
     }
     
