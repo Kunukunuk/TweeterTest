@@ -1,33 +1,34 @@
-# Project 5 - *Name of App Here*
+# Project 5 - *TwitterTest*
 
-**Name of your app** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
+**TwitterTest** is a basic twitter app to read and compose tweets the [Twitter API](https://apps.twitter.com/).
 
-Time spent: **X** hours spent in total
+Time spent: **25** hours spent in total
 
 ## User Stories
 
 The following **required** functionality is completed:
 
-- [ ] User sees app icon in home screen and styled launch screen. (1pt)
-- [ ] User can sign in using OAuth login flow. (1pt)
-- [ ] User can Logout. (1pt)
-- [ ] Create Data Models for User and Tweet. (1pt)
-- [ ] User can view last 20 tweets from their home timeline with the user profile picture, username, tweet text, and timestamp. (2pts)
-- [ ] User can pull to refresh. (1pt)
-- [ ] User can tap the retweet and favorite buttons in a tweet cell to retweet and/or favorite a tweet. (2pts)
-- [ ] Using AutoLayout, the Tweet cell should adjust it's layout for iPhone 7, Plus and SE device sizes as well as accommodate device rotation. (1pt)
+- [X] User sees app icon in home screen and styled launch screen. (1pt)
+- [X] User can sign in using OAuth login flow. (1pt)
+- [X] User can Logout. (1pt)
+- [X] Create Data Models for User and Tweet. (1pt)
+- [X] User can view last 20 tweets from their home timeline with the user profile picture, username, tweet text, and timestamp. (2pts)
+- [X] User can pull to refresh. (1pt)
+- [X] User can tap the retweet and favorite buttons in a tweet cell to retweet and/or favorite a tweet. (2pts)
+- [X] Using AutoLayout, the Tweet cell should adjust it's layout for iPhone 7, Plus and SE device sizes as well as accommodate device rotation. (1pt)
 
 The following **stretch** features are implemented:
 
-- [ ] The current signed in user will be persisted across restarts. (1pt)
-- [ ] Each tweet should display the relative timestamp for each tweet "8m", "7h". (1pt)
-- [ ] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count. (1pt)
+- [X] The current signed in user will be persisted across restarts. (1pt)
+- [X] Each tweet should display the relative timestamp for each tweet "8m", "7h". (1pt)
+- [X] User should be able to unretweet and unfavorite and should decrement the retweet and favorite count. (1pt)
 - [ ] Links in tweets are clickable. (2pts)
 - [ ] User can load more tweets once they reach the bottom of the feed using infinite loading similar to the actual Twitter client. (2pts)
 
 The following **additional** features are implemented:
 
 - [ ] List anything else that you can get done to improve the app functionality!
+- [X] Compose Tweet
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 
@@ -38,7 +39,7 @@ Please list two areas of the assignment you'd like to **discuss further with you
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+![kun_huang_twitter](https://user-images.githubusercontent.com/28847045/46985754-fd2e5780-d0b9-11e8-8c60-91d4a8f8431e.gif)
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
