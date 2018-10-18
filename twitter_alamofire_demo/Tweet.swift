@@ -61,7 +61,7 @@ class Tweet: NSObject {
         let date = formatter.date(from: createdAtOriginalString)!
         // Configure output format
         formatter.dateStyle = .short
-        formatter.timeStyle = .none
+        formatter.timeStyle = .medium
         // Convert Date to String and set the createdAtString property
         createdAtString = formatter.string(from: date)
     }

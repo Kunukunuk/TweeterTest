@@ -46,14 +46,13 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
             usernameLabel.text = tweet.user?.name
             screenNameLabel.text = tweet.user?.screenName
             
-            let formatter = DateFormatter()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "E MMM d HH:mm:ss Z y"
+            dateFormatter.dateStyle = .short
+            dateFormatter.timeStyle = .medium
+            let localDate = dateFormatter.date(from: tweet.createdAtString!)
             
-            formatter.dateStyle = .short
-            formatter.timeStyle = .none
-            
-            let date = formatter.date(from: tweet.createdAtString!)
-
-            let timeAgo = date?.shortTimeAgoSinceNow
+            let timeAgo = localDate?.shortTimeAgoSinceNow
             
             dateLabel.text = timeAgo
             
