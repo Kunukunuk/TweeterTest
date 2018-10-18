@@ -293,8 +293,7 @@
                     <navigationItem key="navigationItem" title="Home Timeline" id="9Zi-uW-GTS">
                         <barButtonItem key="leftBarButtonItem" title="Post" id="2Kz-e7-7Ly">
                             <connections>
-                                <action selector="didTapPost:" destination="5YO-Vh-39k" id="l5U-xj-B2L"/>
-                                <segue destination="Yf5-Zs-Nxq" kind="presentation" id="auU-gc-nZ7"/>
+                                <segue destination="Yf5-Zs-Nxq" kind="presentation" identifier="composeTweet" id="auU-gc-nZ7"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="hz2-ji-ft0">

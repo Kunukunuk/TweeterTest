@@ -8,23 +8,43 @@
 
 import UIKit
 
-protocol ComposeViewControllerDelegate {
+protocol ComposeViewControllerDelegate: class {
     func did(post: Tweet)
 }
 
-class ComposeTweetViewController: UIViewController {
+class ComposeTweetViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var tweetText: UITextView!
-    
-    
+    weak var delegate: ComposeViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tweetText.delegate = self
 
-        // Do any additional setup after loading the view.
+        tweetText.text = "What is your curren status"
+        tweetText.textColor = UIColor.lightGray
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.lightGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
     }
     
     @IBAction func tweetTheTweet(_ sender: UIButton) {
+        
+        APIManager.shared.composeTweet(statusText: tweetText.text!) { (tweet: Tweet?, error: Error?) in
+            if let error = error {
+                print("Error 123***: \(error.localizedDescription)")
+            } else {
+                print("Successful!!: \(tweet)")
+                self.delegate?.did(post: tweet!)
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        
     }
     
     @IBAction func cancelTweet(_ sender: UIButton) {

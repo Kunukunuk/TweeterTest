@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TimelineViewController: UIViewController, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate {
+class TimelineViewController: UIViewController, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, ComposeViewControllerDelegate {
 
     var tweetsArray: [Tweet] = []
     @IBOutlet weak var tableView: UITableView!
@@ -31,7 +31,6 @@ class TimelineViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     func refreshControlAction(_ refreshControl: UIRefreshControl) {
-        tweetsArray.removeAll()
         getTweets()
         refreshControl.endRefreshing()
     }
@@ -42,6 +41,7 @@ class TimelineViewController: UIViewController, UINavigationControllerDelegate, 
     }
     
     func getTweets() {
+        tweetsArray.removeAll()
         APIManager.shared.getHomeTimeLine { (tweets: [Tweet]?, error: Error?) in
             if error == nil {
                 for tweet in tweets! {
@@ -68,22 +68,21 @@ class TimelineViewController: UIViewController, UINavigationControllerDelegate, 
         return cell
     }
     
-    @IBAction func didTapPost(_ sender: UIBarButtonItem) {
+    func did(post: Tweet) {
+        getTweets()
+//        tweetsArray.append(post)
+//        tableView.reloadData()
     }
-    
     
     @IBAction func tapLogout(_ sender: UIBarButtonItem) {
         
         APIManager.logout()
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "composeTweet" {
+            let destinationVC = segue.destination as! ComposeTweetViewController
+            destinationVC.delegate = self
+        }
     }
-    */
-
 }

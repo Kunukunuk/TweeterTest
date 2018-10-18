@@ -18,7 +18,7 @@ class PostTweetViewController: UIViewController, UITextViewDelegate {
         
         tweetText.delegate = self
         
-        tweetText.text = "What is your curren status"
+        tweetText.text = "What is your current status"
         tweetText.textColor = UIColor.lightGray
         // Do any additional setup after loading the view.
     }
@@ -41,8 +41,6 @@ class PostTweetViewController: UIViewController, UITextViewDelegate {
             }
         }
         
-        tweetText.text = "What is your curren status"
-        tweetText.textColor = UIColor.lightGray
     }
     
     
