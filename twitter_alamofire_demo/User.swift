@@ -50,7 +50,7 @@ class User: NSObject {
         self.dictionary = dictionary
         
         name = dictionary["name"] as? String ?? "No Name"
-        screenName = dictionary["screen_name"] as? String ?? "No screen name"
+        screenName = "@" + (dictionary["screen_name"] as? String ?? "No screen name")
         followingCount = dictionary["following"] as? Int ?? 0
         followerCount = dictionary["followers_count"] as? Int ?? 0
         let profileString = dictionary["profile_image_url"] as? String ?? ""
