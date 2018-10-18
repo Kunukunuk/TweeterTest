@@ -48,6 +48,66 @@
             </objects>
             <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
         </scene>
+        <!--Compose Tweet View Controller-->
+        <scene sceneID="oCb-Bs-fhT">
+            <objects>
+                <viewController id="Yf5-Zs-Nxq" customClass="ComposeTweetViewController" customModule="twitter_alamofire_demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="peh-Wx-0yq"/>
+                        <viewControllerLayoutGuide type="bottom" id="eiU-OF-BaO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kHO-wM-X8p">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KkT-F1-2X1">
+                                <rect key="frame" x="21" y="25" width="349" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="bRw-JU-jh2"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8FH-rH-qQv">
+                                <rect key="frame" x="305" y="235" width="65" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Tweet"/>
+                                <connections>
+                                    <action selector="tweetTheTweet:" destination="Yf5-Zs-Nxq" eventType="touchUpInside" id="JZT-PR-yxr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ht5-9x-qZp">
+                                <rect key="frame" x="21" y="235" width="76" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelTweet:" destination="Yf5-Zs-Nxq" eventType="touchUpInside" id="gca-SW-gWS"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ht5-9x-qZp" firstAttribute="leading" secondItem="KkT-F1-2X1" secondAttribute="leading" id="4R6-2o-gOx"/>
+                            <constraint firstAttribute="trailing" secondItem="8FH-rH-qQv" secondAttribute="trailing" constant="5" id="9kj-A5-t6w"/>
+                            <constraint firstItem="ht5-9x-qZp" firstAttribute="leading" secondItem="kHO-wM-X8p" secondAttribute="leadingMargin" constant="5" id="Qd2-fc-FXT"/>
+                            <constraint firstItem="KkT-F1-2X1" firstAttribute="trailing" secondItem="kHO-wM-X8p" secondAttribute="trailingMargin" constant="5" id="UiH-1N-6UF"/>
+                            <constraint firstItem="8FH-rH-qQv" firstAttribute="top" secondItem="KkT-F1-2X1" secondAttribute="bottom" constant="10" id="fvb-wK-PxK"/>
+                            <constraint firstItem="8FH-rH-qQv" firstAttribute="trailing" secondItem="KkT-F1-2X1" secondAttribute="trailing" id="fxa-BH-5xT"/>
+                            <constraint firstItem="KkT-F1-2X1" firstAttribute="top" secondItem="peh-Wx-0yq" secondAttribute="bottom" constant="5" id="jWH-P0-2Aa"/>
+                            <constraint firstItem="KkT-F1-2X1" firstAttribute="leading" secondItem="kHO-wM-X8p" secondAttribute="leadingMargin" constant="5" id="oQD-0R-PgZ"/>
+                            <constraint firstItem="ht5-9x-qZp" firstAttribute="top" secondItem="KkT-F1-2X1" secondAttribute="bottom" constant="10" id="ul6-7r-iAo"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tweetText" destination="KkT-F1-2X1" id="wxJ-wP-Vf4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zUa-98-IPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3636" y="37"/>
+        </scene>
         <!--Home Timeline-->
         <scene sceneID="5vf-Kh-7ye">
             <objects>
@@ -97,7 +157,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I love tweeting!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epC-Fs-Q5Z" customClass="TTTAttributedLabel">
-                                                    <rect key="frame" x="85" y="30.5" width="116" height="32"/>
+                                                    <rect key="frame" x="85" y="30.5" width="115" height="32"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -231,6 +291,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Home Timeline" id="9Zi-uW-GTS">
+                        <barButtonItem key="leftBarButtonItem" title="Post" id="2Kz-e7-7Ly">
+                            <connections>
+                                <action selector="didTapPost:" destination="5YO-Vh-39k" id="l5U-xj-B2L"/>
+                                <segue destination="Yf5-Zs-Nxq" kind="presentation" id="auU-gc-nZ7"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Logout" id="hz2-ji-ft0">
                             <connections>
                                 <action selector="tapLogout:" destination="5YO-Vh-39k" id="6Zf-0G-vrT"/>
@@ -270,6 +336,7 @@
                 <tabBarController storyboardIdentifier="TabBarNavigation" automaticallyAdjustsScrollViewInsets="NO" id="tBa-2q-5tJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Cqs-je-UkB">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>

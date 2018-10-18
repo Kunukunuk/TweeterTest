@@ -68,6 +68,9 @@ class TimelineViewController: UIViewController, UINavigationControllerDelegate, 
         return cell
     }
     
+    @IBAction func didTapPost(_ sender: UIBarButtonItem) {
+    }
+    
     
     @IBAction func tapLogout(_ sender: UIBarButtonItem) {
         
