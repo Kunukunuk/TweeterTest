@@ -188,7 +188,6 @@ class APIManager: SessionManager {
                         ]
         let urlString = "https://api.twitter.com/1.1/statuses/update.json"
 
-        print("parameters: \(parameters)")
         oauthManager.client.post(urlString, parameters: parameters, headers: nil, body: nil, success: { (response: OAuthSwiftResponse) in
             let tweetDictionary = try! response.jsonObject() as! [String: Any]
             let tweet = Tweet(dictionary: tweetDictionary)

@@ -34,7 +34,7 @@ class TimelineViewController: UIViewController, UINavigationControllerDelegate, 
         getTweets()
         refreshControl.endRefreshing()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -65,13 +65,19 @@ class TimelineViewController: UIViewController, UINavigationControllerDelegate, 
         if !tweetsArray.isEmpty {
             cell.tweet = tweetsArray[indexPath.row]
         }
+        
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
+    }
+    
     func did(post: Tweet) {
-        getTweets()
-//        tweetsArray.append(post)
-//        tableView.reloadData()
+//        getTweets()
+        tweetsArray.insert(post, at: 0)
+        
+        tableView.reloadData()
     }
     
     @IBAction func tapLogout(_ sender: UIBarButtonItem) {

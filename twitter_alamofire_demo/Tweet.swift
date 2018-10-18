@@ -37,7 +37,11 @@ class Tweet: NSObject {
         }
         
         id = dictionary["id"] as? Int
-        text = dictionary["full_text"] as? String
+        if let fullText = dictionary["full_text"] as? String {
+            text = fullText
+        } else {
+            text = dictionary["text"] as? String
+        }
         favoriteCount = dictionary["favorite_count"] as? Int
         favorited = dictionary["favorited"] as? Bool
         retweetCount = dictionary["retweet_count"] as? Int

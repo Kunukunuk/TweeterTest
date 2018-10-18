@@ -39,7 +39,7 @@ class ComposeTweetViewController: UIViewController, UITextViewDelegate {
             if let error = error {
                 print("Error 123***: \(error.localizedDescription)")
             } else {
-                print("Successful!!: \(tweet)")
+                print("Successful!!: \(tweet?.text)")
                 self.delegate?.did(post: tweet!)
                 self.dismiss(animated: true, completion: nil)
             }

@@ -40,11 +40,6 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
             }
             
             tweetTextLabel.delegate = self
-            //let nsString = tweet.text! as NSString
-            //let rangeAt = nsString.range(of: "@")
-            //let rangeHash = nsString.range(of: "#")
-            
-            //tweetTextLabel.addLink(toAddress: <#T##[AnyHashable : Any]!#>, with: <#T##NSRange#>)
             
             tweetTextLabel.text = tweet.text
           
@@ -57,7 +52,7 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
             formatter.timeStyle = .none
             
             let date = formatter.date(from: tweet.createdAtString!)
-            
+
             let timeAgo = date?.shortTimeAgoSinceNow
             
             dateLabel.text = timeAgo
