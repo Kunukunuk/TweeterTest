@@ -199,8 +199,23 @@ class APIManager: SessionManager {
     }
     
     // MARK: TODO: Get User Timeline
-    func getUserTimeline() {
+    func getUserTimeline(with userScreenName: String, completion: @escaping ([Tweet]?, Error?) -> ())  {
         
+        let urlString = "https://api.twitter.com/1.1/statuses/user_timeline.json"
+        let parameters = [ "screen_name" :  userScreenName ]
+        request(urlString, method: .get, parameters: parameters).validate().responseJSON { (response) in
+            
+            if response.result.isSuccess,
+                let tweetDictionary = response.result.value as? [[String: Any]] {
+                    let tweets = tweetDictionary.flatMap({ (dictionary) -> Tweet in
+                        Tweet(dictionary: dictionary)
+                    })
+                    completion(tweets, nil)
+            } else {
+                completion(nil, response.result.error)
+            }
+            
+        }
     }
     
     //--------------------------------------------------------------------------------//

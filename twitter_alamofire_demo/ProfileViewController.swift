@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -20,6 +20,9 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var numberOfFollowingLabel: UILabel!
     @IBOutlet weak var followingAcceptionRate: UILabel!
     @IBOutlet weak var followingRejectionRate: UILabel!
+
+    @IBOutlet weak var tableView: UITableView!
+    var tweetsArray: [Tweet] = []
     
     
     override func viewDidLoad() {
@@ -41,9 +44,42 @@ class ProfileViewController: UIViewController {
         
         followingAcceptionRate.text = String(currentUser.followingAcception!) + " %"
         followingRejectionRate.text = String(100 - currentUser.followingAcception!) + " %"
-        // Do any additional setup after loading the view.
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        getTweets()
     }
     
+    func getTweets() {
+        
+        APIManager.shared.getUserTimeline(with: (User.current?.screenName)!) { (tweets, error) in
+            if error == nil {
+                print("successful")
+                for tweet in tweets! {
+                    self.tweetsArray.append(tweet)
+                    self.tableView.reloadData()
+                }
+            } else {
+                print("error: \(error?.localizedDescription)")
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let count = tweetsArray.isEmpty ? 1 : tweetsArray.count
+        return count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+        
+        if !tweetsArray.isEmpty {
+            cell.tweet = tweetsArray[indexPath.row]
+        }
+        
+        return cell
+    }
     /*
     // MARK: - Navigation
 

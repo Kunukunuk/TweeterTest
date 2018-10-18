@@ -10,6 +10,8 @@ import UIKit
 
 class User: NSObject {
 
+//    var id : Int?
+//    var idSTR: String?
     var name: String?
     var screenName: String?
     var followingCount: Int?
@@ -53,6 +55,8 @@ class User: NSObject {
         
         self.dictionary = dictionary
         
+//        id = dictionary["id"] as? Int ?? 0
+//        idSTR = dictionary["id_str"] as? String ?? "No id str"
         name = dictionary["name"] as? String ?? "No Name"
         screenName = "@" + (dictionary["screen_name"] as? String ?? "No screen name")
         followingCount = dictionary["following"] as? Int ?? 0
