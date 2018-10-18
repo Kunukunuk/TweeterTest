@@ -16,6 +16,7 @@ class ComposeTweetViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var tweetText: UITextView!
     weak var delegate: ComposeViewControllerDelegate?
+    @IBOutlet weak var countLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,7 @@ class ComposeTweetViewController: UIViewController, UITextViewDelegate {
 
         tweetText.text = "What is your curren status"
         tweetText.textColor = UIColor.lightGray
+        countLabel.text = "0 / 280 limit"
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -45,6 +47,19 @@ class ComposeTweetViewController: UIViewController, UITextViewDelegate {
             }
         }
         
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        let characterLimit = 280
+        
+        // Construct what the new text would be if we allowed the user's latest edit
+        let newText = NSString(string: textView.text!).replacingCharacters(in: range, with: text)
+        
+        // TODO: Update Character Count Label
+        countLabel.text = "\(newText.count) / \(characterLimit) limit"
+        
+        // The new text should be allowed? True/False
+        return newText.count < characterLimit
     }
     
     @IBAction func cancelTweet(_ sender: UIButton) {

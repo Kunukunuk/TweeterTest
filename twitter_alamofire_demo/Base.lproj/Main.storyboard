@@ -61,7 +61,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KkT-F1-2X1">
-                                <rect key="frame" x="21" y="25" width="349" height="200"/>
+                                <rect key="frame" x="21" y="25" width="343" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="bRw-JU-jh2"/>
@@ -71,15 +71,21 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8FH-rH-qQv">
-                                <rect key="frame" x="305" y="235" width="65" height="42"/>
+                                <rect key="frame" x="299" y="265" width="65" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Tweet"/>
                                 <connections>
                                     <action selector="tweetTheTweet:" destination="Yf5-Zs-Nxq" eventType="touchUpInside" id="JZT-PR-yxr"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Count" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hbg-db-jBo">
+                                <rect key="frame" x="287.5" y="225" width="66.5" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ht5-9x-qZp">
-                                <rect key="frame" x="21" y="235" width="76" height="42"/>
+                                <rect key="frame" x="21" y="265" width="76" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="Cancel"/>
                                 <connections>
@@ -89,18 +95,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ht5-9x-qZp" firstAttribute="leading" secondItem="KkT-F1-2X1" secondAttribute="leading" id="4R6-2o-gOx"/>
-                            <constraint firstAttribute="trailing" secondItem="8FH-rH-qQv" secondAttribute="trailing" constant="5" id="9kj-A5-t6w"/>
-                            <constraint firstItem="ht5-9x-qZp" firstAttribute="leading" secondItem="kHO-wM-X8p" secondAttribute="leadingMargin" constant="5" id="Qd2-fc-FXT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Hbg-db-jBo" secondAttribute="trailing" constant="5" id="9Ms-cG-DPc"/>
+                            <constraint firstItem="Hbg-db-jBo" firstAttribute="top" secondItem="KkT-F1-2X1" secondAttribute="bottom" id="SYo-9l-Lmc"/>
                             <constraint firstItem="KkT-F1-2X1" firstAttribute="trailing" secondItem="kHO-wM-X8p" secondAttribute="trailingMargin" constant="5" id="UiH-1N-6UF"/>
-                            <constraint firstItem="8FH-rH-qQv" firstAttribute="top" secondItem="KkT-F1-2X1" secondAttribute="bottom" constant="10" id="fvb-wK-PxK"/>
-                            <constraint firstItem="8FH-rH-qQv" firstAttribute="trailing" secondItem="KkT-F1-2X1" secondAttribute="trailing" id="fxa-BH-5xT"/>
+                            <constraint firstItem="ht5-9x-qZp" firstAttribute="leading" secondItem="kHO-wM-X8p" secondAttribute="leadingMargin" constant="5" id="YkO-6w-M8O"/>
+                            <constraint firstItem="ht5-9x-qZp" firstAttribute="top" secondItem="KkT-F1-2X1" secondAttribute="bottom" constant="40" id="gin-2M-481"/>
                             <constraint firstItem="KkT-F1-2X1" firstAttribute="top" secondItem="peh-Wx-0yq" secondAttribute="bottom" constant="5" id="jWH-P0-2Aa"/>
+                            <constraint firstItem="8FH-rH-qQv" firstAttribute="top" secondItem="Hbg-db-jBo" secondAttribute="bottom" constant="10" id="kpJ-k7-rDF"/>
+                            <constraint firstItem="8FH-rH-qQv" firstAttribute="bottom" secondItem="ht5-9x-qZp" secondAttribute="bottom" id="lVr-rV-I7f"/>
                             <constraint firstItem="KkT-F1-2X1" firstAttribute="leading" secondItem="kHO-wM-X8p" secondAttribute="leadingMargin" constant="5" id="oQD-0R-PgZ"/>
-                            <constraint firstItem="ht5-9x-qZp" firstAttribute="top" secondItem="KkT-F1-2X1" secondAttribute="bottom" constant="10" id="ul6-7r-iAo"/>
+                            <constraint firstItem="8FH-rH-qQv" firstAttribute="trailing" secondItem="kHO-wM-X8p" secondAttribute="trailingMargin" constant="5" id="qsj-ad-vZS"/>
+                            <constraint firstItem="8FH-rH-qQv" firstAttribute="top" secondItem="ht5-9x-qZp" secondAttribute="top" id="w8D-gg-ZnY"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="countLabel" destination="Hbg-db-jBo" id="3ge-Wo-NH6"/>
                         <outlet property="tweetText" destination="KkT-F1-2X1" id="wxJ-wP-Vf4"/>
                     </connections>
                 </viewController>
