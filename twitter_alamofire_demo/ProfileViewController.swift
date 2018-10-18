@@ -14,20 +14,36 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var screenNameLabel: UILabel!
     
+    @IBOutlet weak var numberOfTweetsLabel: UILabel!
+    @IBOutlet weak var numberOfFollowersLabel: UILabel!
+    @IBOutlet weak var numberOfFavoritesLabel: UILabel!
+    @IBOutlet weak var numberOfFollowingLabel: UILabel!
+    @IBOutlet weak var followingAcceptionRate: UILabel!
+    @IBOutlet weak var followingRejectionRate: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if User.current?.profileImageURLHttps != nil {
+        
+        let currentUser = User.current!
+        if currentUser.profileImageURLHttps != nil {
             profileImageView.af_setImage(withURL: (User.current?.profileImageURLHttps)!)
         } else {
             profileImageView.image = UIImage(named: "account-icon")
         }
-        nameLabel.text = User.current?.name
-        screenNameLabel.text = User.current?.screenName
+        nameLabel.text = currentUser.name
+        screenNameLabel.text = currentUser.screenName
+        
+        numberOfTweetsLabel.text = String(currentUser.numberOfTweets!)
+        numberOfFollowersLabel.text = String(currentUser.followerCount!)
+        numberOfFollowingLabel.text = String(currentUser.followingCount!)
+        numberOfFavoritesLabel.text = String(currentUser.favoriteCount!)
+        
+        followingAcceptionRate.text = String(currentUser.followingAcception!) + " %"
+        followingRejectionRate.text = String(100 - currentUser.followingAcception!) + " %"
         // Do any additional setup after loading the view.
     }
     
-
     /*
     // MARK: - Navigation
 

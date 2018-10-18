@@ -78,6 +78,15 @@ class TimelineViewController: UIViewController, UINavigationControllerDelegate, 
         tweetsArray.insert(post, at: 0)
         
         tableView.reloadData()
+        
+        APIManager.shared.getCurrentAccount { (user, error) in
+            if error == nil {
+                print("updated user")
+                User.current = user
+            } else {
+                print("error getting user : \(error?.localizedDescription)")
+            }
+        }
     }
     
     @IBAction func tapLogout(_ sender: UIBarButtonItem) {

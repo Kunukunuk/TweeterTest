@@ -17,6 +17,10 @@ class User: NSObject {
     var verified: Int?
     var profileImageURL: URL?
     var profileImageURLHttps: URL?
+    var followingRequestSent: Int?
+    var favoriteCount: Int?
+    var numberOfTweets: Int?
+    var followingAcception: Double?
     
     private static var _current: User?
     var dictionary: [String: Any]?
@@ -58,6 +62,15 @@ class User: NSObject {
         let profilStringHttps = dictionary["profile_image_url_https"] as? String ?? ""
         profileImageURLHttps = URL(string: profilStringHttps)
         
+        followingRequestSent = dictionary["follow_request_sent"] as? Int ?? 0
+        favoriteCount = dictionary["favourites_count"] as? Int ?? 0
+        numberOfTweets = dictionary["statuses_count"] as? Int ?? 0
+        
+        if followingRequestSent == 0 {
+            followingAcception = 0
+        } else {
+            followingAcception = Double(followingCount!) / Double(followingRequestSent!)
+        }
     }
     
 }
