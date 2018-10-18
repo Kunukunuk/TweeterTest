@@ -17,13 +17,25 @@ class ComposeTweetViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var tweetText: UITextView!
     weak var delegate: ComposeViewControllerDelegate?
     @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var screenNameLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if User.current?.profileImageURLHttps != nil {
+            profileImageView.af_setImage(withURL: (User.current?.profileImageURLHttps)!)
+        } else {
+            profileImageView.image = UIImage(named: "account-icon")
+        }
+        nameLabel.text = User.current?.name
+        screenNameLabel.text = User.current?.screenName
+        
         tweetText.delegate = self
 
-        tweetText.text = "What is your curren status"
+        tweetText.text = "What is your current status"
         tweetText.textColor = UIColor.lightGray
         countLabel.text = "0 / 280 limit"
     }
