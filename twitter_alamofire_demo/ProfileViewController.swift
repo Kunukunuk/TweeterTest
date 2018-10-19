@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -20,13 +20,13 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var numberOfFollowingLabel: UILabel!
     @IBOutlet weak var followingAcceptionRate: UILabel!
     @IBOutlet weak var followingRejectionRate: UILabel!
-
+    
     @IBOutlet weak var tableView: UITableView!
     var tweetsArray: [Tweet] = []
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         let currentUser = User.current!
         if currentUser.profileImageURLHttps != nil {
