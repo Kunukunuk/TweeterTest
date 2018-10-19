@@ -786,6 +786,7 @@
                     <connections>
                         <outlet property="followingAcceptionRate" destination="l5E-YD-raI" id="pDV-Ks-HHn"/>
                         <outlet property="followingRejectionRate" destination="h9R-hA-YeW" id="Czv-20-uIJ"/>
+                        <outlet property="headerView" destination="2M9-1E-pKE" id="FbJ-vS-MOp"/>
                         <outlet property="nameLabel" destination="TE8-BO-mf5" id="7Qx-fq-5GJ"/>
                         <outlet property="numberOfFavoritesLabel" destination="O90-LE-EIT" id="aU3-bo-kM7"/>
                         <outlet property="numberOfFollowersLabel" destination="JL7-kR-v2y" id="zwA-zX-l9K"/>
@@ -793,6 +794,7 @@
                         <outlet property="numberOfTweetsLabel" destination="TYV-ci-DNM" id="F1b-ID-CV7"/>
                         <outlet property="profileImageView" destination="HP5-DZ-lWe" id="5yg-cB-2Ja"/>
                         <outlet property="screenNameLabel" destination="9ay-xy-0kx" id="VmF-jH-mig"/>
+                        <outlet property="statView" destination="fLS-iL-C4d" id="s3Z-LU-ZFB"/>
                         <outlet property="tableView" destination="pkT-oh-Rls" id="0Ri-75-fJN"/>
                     </connections>
                 </viewController>

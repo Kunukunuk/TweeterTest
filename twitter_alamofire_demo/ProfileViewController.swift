@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate{
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -24,9 +24,11 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var tableView: UITableView!
     var tweetsArray: [Tweet] = []
     
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var statView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         let currentUser = User.current!
         if currentUser.profileImageURLHttps != nil {
@@ -49,6 +51,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         tableView.dataSource = self
         
         getTweets()
+        
     }
     
     func getTweets() {
