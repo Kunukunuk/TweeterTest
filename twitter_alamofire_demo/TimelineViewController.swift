@@ -98,6 +98,8 @@ class TimelineViewController: UIViewController, UINavigationControllerDelegate, 
         if segue.identifier == "composeTweet" {
             let destinationVC = segue.destination as! ComposeTweetViewController
             destinationVC.delegate = self
+        } else if segue.identifier == "ClickedImage" {
+            
         }
     }
 }
