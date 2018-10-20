@@ -441,8 +441,8 @@
                                     <constraint firstItem="HP5-DZ-lWe" firstAttribute="top" secondItem="2M9-1E-pKE" secondAttribute="top" constant="5" id="uOD-pJ-Bj8"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLS-iL-C4d">
-                                <rect key="frame" x="0.0" y="153" width="375" height="180"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fLS-iL-C4d" customClass="UIScrollView">
+                                <rect key="frame" x="0.0" y="153" width="375" height="190.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Numbers of" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="72u-dZ-e5S">
                                         <rect key="frame" x="0.0" y="35" width="375" height="24"/>
@@ -599,14 +599,13 @@
                                     <constraint firstItem="72u-dZ-e5S" firstAttribute="leading" secondItem="fLS-iL-C4d" secondAttribute="leading" id="pLf-VO-yNx"/>
                                     <constraint firstItem="uh6-JX-ueD" firstAttribute="leading" secondItem="fLS-iL-C4d" secondAttribute="leading" id="q2v-Tm-CyO"/>
                                     <constraint firstItem="cH9-T9-GJV" firstAttribute="leading" secondItem="fLS-iL-C4d" secondAttribute="leading" id="rfy-aG-KTK"/>
-                                    <constraint firstAttribute="height" constant="180" id="tKt-A0-BY0"/>
                                     <constraint firstItem="h9R-hA-YeW" firstAttribute="leading" secondItem="cH9-T9-GJV" secondAttribute="trailing" constant="12" id="tzN-mO-22K"/>
                                     <constraint firstItem="h9R-hA-YeW" firstAttribute="bottom" secondItem="cH9-T9-GJV" secondAttribute="bottom" id="wuV-SK-UnB"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cH9-T9-GJV" secondAttribute="bottom" constant="5" id="xMs-ec-jlD"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pkT-oh-Rls">
-                                <rect key="frame" x="0.0" y="338" width="375" height="280"/>
+                                <rect key="frame" x="0.0" y="348.5" width="375" height="269.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetCell" rowHeight="103" id="I9r-FZ-DbG" customClass="TweetCell" customModule="twitter_alamofire_demo" customModuleProvider="target">
@@ -769,6 +768,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="fLS-iL-C4d" firstAttribute="height" secondItem="QPO-pA-oNB" secondAttribute="height" multiplier="2:7" id="7VH-fg-OOQ"/>
                             <constraint firstAttribute="trailing" secondItem="pkT-oh-Rls" secondAttribute="trailing" id="81c-e8-ZIy"/>
                             <constraint firstItem="2M9-1E-pKE" firstAttribute="leading" secondItem="QPO-pA-oNB" secondAttribute="leading" id="N8p-KQ-VVp"/>
                             <constraint firstItem="pkT-oh-Rls" firstAttribute="leading" secondItem="QPO-pA-oNB" secondAttribute="leading" id="QKw-6Q-ND6"/>
@@ -794,7 +794,7 @@
                         <outlet property="numberOfTweetsLabel" destination="TYV-ci-DNM" id="F1b-ID-CV7"/>
                         <outlet property="profileImageView" destination="HP5-DZ-lWe" id="5yg-cB-2Ja"/>
                         <outlet property="screenNameLabel" destination="9ay-xy-0kx" id="VmF-jH-mig"/>
-                        <outlet property="statView" destination="fLS-iL-C4d" id="s3Z-LU-ZFB"/>
+                        <outlet property="statScrollView" destination="fLS-iL-C4d" id="dgi-Oo-uGR"/>
                         <outlet property="tableView" destination="pkT-oh-Rls" id="0Ri-75-fJN"/>
                     </connections>
                 </viewController>

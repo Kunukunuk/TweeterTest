@@ -25,7 +25,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     var tweetsArray: [Tweet] = []
     
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var statView: UIView!
+    
+    @IBOutlet weak var statScrollView: UIScrollView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +51,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         tableView.delegate = self
         tableView.dataSource = self
+        statScrollView.delegate = self
+        statScrollView.contentSize = CGSize(width: statScrollView.bounds.width, height: statScrollView.bounds.height)
         
         getTweets()
         
