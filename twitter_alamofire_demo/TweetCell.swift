@@ -41,8 +41,19 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
             
             tweetTextLabel.delegate = self
             
-            tweetTextLabel.text = tweet.text
-          
+            //tweetTextLabel.text = tweet.text
+            
+            let nsString = tweet.text! as NSString
+            tweetTextLabel.text = nsString
+            
+            let range = nsString.range(of: "tweet")
+            let urlLink = URL(string: "action://users/")
+            tweetTextLabel.addLink(to: urlLink!, with: range)
+            
+            //tweetTextLabel.setText(nsAttribute)
+            //tweetTextLabel.addLink(to: url, with: range)
+            //label.addLinkToURL(url, withRange: range)
+            
             usernameLabel.text = tweet.user?.name
             screenNameLabel.text = tweet.user?.screenName
             
@@ -75,6 +86,13 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
         }
     }
     
+    func highlightHashAndAt(textToSearch: String) -> String {
+        
+        var highlightedString = ""
+        
+        return highlightedString
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -82,6 +100,10 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
     
     func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWithAddress addressComponents: [AnyHashable : Any]!) {
         print("hello")
+    }
+    
+    func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
+        print("hello link")
     }
     
     @IBAction func replyButton(_ sender: UIButton) {
