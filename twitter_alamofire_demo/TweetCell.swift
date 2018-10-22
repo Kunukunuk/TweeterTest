@@ -42,17 +42,17 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
             tweetTextLabel.delegate = self
             
             //tweetTextLabel.text = tweet.text
-            
             let nsString = tweet.text! as NSString
             tweetTextLabel.text = nsString
+            _ = highlightHashAndAt(textToSearch: nsString)
             
-            let range = nsString.range(of: "tweet")
-            let urlLink = URL(string: "action://users/")
-            tweetTextLabel.addLink(to: urlLink!, with: range)
-            
-            //tweetTextLabel.setText(nsAttribute)
-            //tweetTextLabel.addLink(to: url, with: range)
-            //label.addLinkToURL(url, withRange: range)
+//            let range = nsString.range(of: "tweet")
+//            let urlLink = URL(string: "action://users/")
+//            tweetTextLabel.linkAttributes = [
+//                                                NSUnderlineStyle.styleNone : NSUnderlineStyleAttributeName,
+//                                                NSForegroundColorAttributeName : UIColor.blue
+//                                            ]
+//            tweetTextLabel.addLink(to: urlLink!, with: range)
             
             usernameLabel.text = tweet.user?.name
             screenNameLabel.text = tweet.user?.screenName
@@ -86,20 +86,31 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
         }
     }
     
-    func highlightHashAndAt(textToSearch: String) -> String {
+    func highlightHashAndAt(textToSearch: NSString) {
         
-        var highlightedString = ""
+        let stringArray = textToSearch.components(separatedBy: " ")
+        var wordCount: [String] = []
         
-        return highlightedString
+        for word in stringArray {
+            if word.hasPrefix("@") || word.hasPrefix("#") {
+                wordCount.append(word)
+            }
+        }
+        for word in wordCount {
+            let range = textToSearch.range(of: word)
+            let urlLink = URL(string: "action://\(word)")
+            tweetTextLabel.linkAttributes = [
+                NSUnderlineStyle.styleNone : NSUnderlineStyleAttributeName,
+                NSForegroundColorAttributeName : UIColor.blue
+            ]
+            tweetTextLabel.addLink(to: urlLink!, with: range)
+        }
+        
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-    
-    func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWithAddress addressComponents: [AnyHashable : Any]!) {
-        print("hello")
     }
     
     func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
