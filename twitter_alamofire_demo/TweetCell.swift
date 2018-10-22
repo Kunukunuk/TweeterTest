@@ -97,7 +97,6 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
             ]
             tweetTextLabel.addLink(to: urlLink!, with: range)
         }
-        
     }
     
     override func awakeFromNib() {
