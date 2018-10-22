@@ -46,14 +46,6 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
             tweetTextLabel.text = nsString
             _ = highlightHashAndAt(textToSearch: nsString)
             
-//            let range = nsString.range(of: "tweet")
-//            let urlLink = URL(string: "action://users/")
-//            tweetTextLabel.linkAttributes = [
-//                                                NSUnderlineStyle.styleNone : NSUnderlineStyleAttributeName,
-//                                                NSForegroundColorAttributeName : UIColor.blue
-//                                            ]
-//            tweetTextLabel.addLink(to: urlLink!, with: range)
-            
             usernameLabel.text = tweet.user?.name
             screenNameLabel.text = tweet.user?.screenName
             
