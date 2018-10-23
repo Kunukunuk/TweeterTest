@@ -35,8 +35,11 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
                 profileImageView.af_setImage(withURL: (tweet.user?.profileImageURL)!)
             }
             
+            let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tappedImage(_:)))
             if tweet.user?.profileImageURLHttps != nil {
                 profileImageView.af_setImage(withURL: (tweet.user?.profileImageURLHttps)!)
+                profileImageView.isUserInteractionEnabled = true
+                profileImageView.addGestureRecognizer(tapGesture)
             }
             
             tweetTextLabel.delegate = self
@@ -78,6 +81,11 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
         }
     }
     
+    @IBAction func tappedImage(_ sender: UITapGestureRecognizer) {
+        
+        print("tapped profile pic")
+        
+    }
     func highlightHashAndAt(textToSearch: NSString) {
         
         let stringArray = textToSearch.components(separatedBy: " ")
