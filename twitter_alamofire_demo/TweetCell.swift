@@ -13,7 +13,6 @@ import TTTAttributedLabel
 
 class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
 
-    
     @IBOutlet weak var profileImageView: UIImageView!
     
     @IBOutlet weak var tweetTextLabel: TTTAttributedLabel!
@@ -83,7 +82,10 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
     
     @IBAction func tappedImage(_ sender: UITapGestureRecognizer) {
         
-        print("tapped profile pic")
+        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
+        var tabBarController = appDelegate.window!.rootViewController as! UITabBarController
+        
+        tabBarController.selectedIndex = 1
         
     }
     func highlightHashAndAt(textToSearch: NSString) {
