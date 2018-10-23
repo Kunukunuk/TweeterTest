@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import TTTAttributedLabel
 
-class TimelineViewController: UIViewController, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, ComposeViewControllerDelegate {
+class TimelineViewController: UIViewController, UINavigationControllerDelegate, UITableViewDataSource, UITableViewDelegate, ComposeViewControllerDelegate, TTTAttributedLabelDelegate {
 
     var tweetsArray: [Tweet] = []
     @IBOutlet weak var tableView: UITableView!
@@ -67,6 +68,7 @@ class TimelineViewController: UIViewController, UINavigationControllerDelegate, 
             cell.tweet = tweetsArray[indexPath.row]
             cell.profileImageView.isUserInteractionEnabled = true
             cell.profileImageView.addGestureRecognizer(tapGesture)
+            cell.tweetTextLabel.delegate = self
         }
         
         return cell
@@ -92,6 +94,10 @@ class TimelineViewController: UIViewController, UINavigationControllerDelegate, 
         }
     }
     
+    func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
+        let word = url.absoluteString
+        print(word)
+    }
     @IBAction func tappedImage(_ sender: UITapGestureRecognizer) {
         
         print("tapped image in timeline")

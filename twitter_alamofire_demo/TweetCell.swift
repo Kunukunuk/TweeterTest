@@ -11,7 +11,7 @@ import AlamofireImage
 import DateToolsSwift
 import TTTAttributedLabel
 
-class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
+class TweetCell: UITableViewCell{
 
     @IBOutlet weak var profileImageView: UIImageView!
     
@@ -38,9 +38,6 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
                 profileImageView.af_setImage(withURL: (tweet.user?.profileImageURLHttps)!)
             }
             
-            tweetTextLabel.delegate = self
-            
-            //tweetTextLabel.text = tweet.text
             let nsString = tweet.text! as NSString
             tweetTextLabel.text = nsString
             _ = highlightHashAndAt(textToSearch: nsString)
@@ -101,11 +98,6 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-    }
-    
-    func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
-        let highlight = url.absoluteString
-        //let highlightWord = action.components(separatedBy: "@")
     }
     
     @IBAction func replyButton(_ sender: UIButton) {
