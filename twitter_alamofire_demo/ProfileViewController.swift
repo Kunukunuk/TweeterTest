@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate{
+class ProfileViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
 
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -27,6 +27,8 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBOutlet weak var headerView: UIView!
     
     @IBOutlet weak var statScrollView: UIScrollView!
+    
+    var screenName = User.current?.name
     
     
     override func viewDidLoad() {
@@ -55,7 +57,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         statScrollView.contentSize = CGSize(width: statScrollView.bounds.width, height: statScrollView.bounds.height)
         
         getTweets()
-        getUser(userScreenName: "@KashfiFahim")
+        //getUser(userScreenName: "@KashfiFahim")
     }
     
     func getUser(userScreenName: String = (User.current?.screenName)!) {

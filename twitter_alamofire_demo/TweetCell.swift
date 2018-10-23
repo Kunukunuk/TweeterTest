@@ -82,10 +82,7 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
     
     @IBAction func tappedImage(_ sender: UITapGestureRecognizer) {
         
-        let appDelegate  = UIApplication.shared.delegate as! AppDelegate
-        var tabBarController = appDelegate.window!.rootViewController as! UITabBarController
-        
-        tabBarController.selectedIndex = 1
+        print("tapped image")
         
     }
     func highlightHashAndAt(textToSearch: NSString) {
