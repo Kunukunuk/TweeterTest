@@ -55,17 +55,15 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         statScrollView.contentSize = CGSize(width: statScrollView.bounds.width, height: statScrollView.bounds.height)
         
         getTweets()
+        getUser(userScreenName: "@KashfiFahim")
     }
     
     func getUser(userScreenName: String = (User.current?.screenName)!) {
         
-        APIManager.shared.getUserTimeline(with: userScreenName) { (tweets, error) in
+        APIManager.shared.getUserInfo(with: userScreenName) { (user, error) in
             if error == nil {
                 print("successful")
-                for tweet in tweets! {
-                    self.tweetsArray.append(tweet)
-                    self.tableView.reloadData()
-                }
+                print("user: \(user?.name)")
             } else {
                 print("error: \(error?.localizedDescription)")
             }

@@ -222,6 +222,13 @@ class APIManager: SessionManager {
         
         let urlString = "https://api.twitter.com/1.1/users/show.json"
         let parameters = [ "screen_name" :  userScreenName ]
+        request(urlString, method: .get, parameters: parameters).validate().responseJSON { (response) in
+            guard let userDictionary = response.result.value as? [String: Any] else {
+                completion(nil, JSONError.parsing("Unable to create user dictionary"))
+                return
+            }
+            completion(User(dictionary: userDictionary), nil)
+        }
     }
     
     //--------------------------------------------------------------------------------//
