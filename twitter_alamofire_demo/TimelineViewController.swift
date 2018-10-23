@@ -61,9 +61,12 @@ class TimelineViewController: UIViewController, UINavigationControllerDelegate, 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TweetCell", for: indexPath) as! TweetCell
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tappedImage(_:)))
         
         if !tweetsArray.isEmpty {
             cell.tweet = tweetsArray[indexPath.row]
+            cell.profileImageView.isUserInteractionEnabled = true
+            cell.profileImageView.addGestureRecognizer(tapGesture)
         }
         
         return cell
@@ -87,6 +90,12 @@ class TimelineViewController: UIViewController, UINavigationControllerDelegate, 
                 print("error getting user : \(error?.localizedDescription)")
             }
         }
+    }
+    
+    @IBAction func tappedImage(_ sender: UITapGestureRecognizer) {
+        
+        print("tapped image in timeline")
+        
     }
     
     @IBAction func tapLogout(_ sender: UIBarButtonItem) {
