@@ -55,6 +55,21 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         statScrollView.contentSize = CGSize(width: statScrollView.bounds.width, height: statScrollView.bounds.height)
         
         getTweets()
+    }
+    
+    func getUser(userScreenName: String = (User.current?.screenName)!) {
+        
+        APIManager.shared.getUserTimeline(with: userScreenName) { (tweets, error) in
+            if error == nil {
+                print("successful")
+                for tweet in tweets! {
+                    self.tweetsArray.append(tweet)
+                    self.tableView.reloadData()
+                }
+            } else {
+                print("error: \(error?.localizedDescription)")
+            }
+        }
         
     }
     
@@ -87,6 +102,7 @@ class ProfileViewController: UIViewController, UITableViewDataSource, UITableVie
         
         return cell
     }
+    
     /*
     // MARK: - Navigation
 

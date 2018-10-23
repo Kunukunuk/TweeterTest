@@ -90,7 +90,7 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
         }
         for word in wordCount {
             let range = textToSearch.range(of: word)
-            let urlLink = URL(string: "action://\(word)")
+            let urlLink = URL(string: "\(word)")
             tweetTextLabel.linkAttributes = [
                 NSUnderlineStyle.styleNone : NSUnderlineStyleAttributeName,
                 NSForegroundColorAttributeName : UIColor.blue
@@ -105,7 +105,8 @@ class TweetCell: UITableViewCell, TTTAttributedLabelDelegate{
     }
     
     func attributedLabel(_ label: TTTAttributedLabel!, didSelectLinkWith url: URL!) {
-        print("hello link")
+        let highlight = url.absoluteString
+        //let highlightWord = action.components(separatedBy: "@")
     }
     
     @IBAction func replyButton(_ sender: UIButton) {

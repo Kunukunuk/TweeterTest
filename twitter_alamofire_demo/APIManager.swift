@@ -218,6 +218,12 @@ class APIManager: SessionManager {
         }
     }
     
+    func getUserInfo(with userScreenName: String, completion: @escaping (User?, Error?) -> ()) {
+        
+        let urlString = "https://api.twitter.com/1.1/users/show.json"
+        let parameters = [ "screen_name" :  userScreenName ]
+    }
+    
     //--------------------------------------------------------------------------------//
     
     
