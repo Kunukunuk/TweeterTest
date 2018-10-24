@@ -7,24 +7,50 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class TweetDetailsViewController: UIViewController {
 
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var screenName: UILabel!
+    @IBOutlet weak var tweetTextLabel: UILabel!
+    @IBOutlet weak var retweetButton: UIButton!
+    @IBOutlet weak var retweetLabel: UILabel!
+    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var favoriteLabel: UILabel!
+    @IBOutlet weak var messageButton: UIButton!
+    var tweet: Tweet?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if let tweetInfo = tweet {
+            if tweetInfo.user?.profileImageURLHttps != nil {
+                profileImageView.af_setImage(withURL: (tweetInfo.user?.profileImageURLHttps)!)
+            }
+            nameLabel.text = tweetInfo.user?.name
+            screenName.text = tweetInfo.user?.screenName
+            tweetTextLabel.text = tweetInfo.text
+            
+            if tweetInfo.favorited! {
+                favoriteLabel.text = "\(tweetInfo.favoriteCount ?? 0)"
+                favoriteButton.setImage(UIImage(named: "favor-icon-red"), for: .normal)
+            } else {
+                favoriteLabel.text = "\(tweetInfo.favoriteCount!)"
+                favoriteButton.setImage(UIImage(named: "favor-icon"), for: .normal)
+            }
+            if tweetInfo.retweeted! {
+                retweetLabel.text = "\(tweetInfo.retweetCount ?? 0)"
+                retweetButton.setImage(UIImage(named: "retweet-icon-green"), for: .normal)
+            } else {
+                retweetLabel.text = "\(tweetInfo.retweetCount!)"
+                retweetButton.setImage(UIImage(named: "retweet-icon"), for: .normal)
+            }
+            
+        }
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

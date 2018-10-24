@@ -275,6 +275,17 @@
                             <constraint firstItem="4sa-8E-agB" firstAttribute="leading" secondItem="BN7-a4-ghd" secondAttribute="trailing" constant="5" id="uce-A8-x2w"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="favoriteButton" destination="MOC-7P-UXj" id="JAq-o3-HfB"/>
+                        <outlet property="favoriteLabel" destination="hKX-JO-qxd" id="z16-12-Dq4"/>
+                        <outlet property="messageButton" destination="7W3-eN-xdm" id="AIA-zc-AYj"/>
+                        <outlet property="nameLabel" destination="DmZ-2E-JDD" id="tqf-wM-G9g"/>
+                        <outlet property="profileImageView" destination="BN7-a4-ghd" id="AtZ-YA-7yX"/>
+                        <outlet property="retweetButton" destination="bhF-DI-Efl" id="xoI-6b-cZx"/>
+                        <outlet property="retweetLabel" destination="PvU-Qo-z7Z" id="pYE-RN-vYc"/>
+                        <outlet property="screenName" destination="4sa-8E-agB" id="L01-Wv-Kco"/>
+                        <outlet property="tweetTextLabel" destination="pT7-qH-q0c" id="8UW-3c-uhQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XWW-TV-gfz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -330,7 +341,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I love tweeting!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="epC-Fs-Q5Z" customClass="TTTAttributedLabel">
-                                                    <rect key="frame" x="85" y="30.5" width="115" height="32"/>
+                                                    <rect key="frame" x="85" y="30.5" width="116" height="32"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -450,7 +461,7 @@
                                             <outlet property="screenNameLabel" destination="w2t-ue-P8P" id="VCY-JN-JQ8"/>
                                             <outlet property="tweetTextLabel" destination="epC-Fs-Q5Z" id="PBV-9Z-b3X"/>
                                             <outlet property="usernameLabel" destination="QAl-Do-S1Q" id="XEh-7h-mKQ"/>
-                                            <segue destination="Aad-iN-0MR" kind="show" id="D5w-pA-dTN"/>
+                                            <segue destination="Aad-iN-0MR" kind="show" identifier="DetailsSegue" id="D5w-pA-dTN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -771,7 +782,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I love tweeting!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3hf-KX-KIF" customClass="TTTAttributedLabel">
-                                                    <rect key="frame" x="85" y="30.5" width="115" height="32"/>
+                                                    <rect key="frame" x="85" y="30.5" width="116" height="32"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
